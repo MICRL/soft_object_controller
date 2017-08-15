@@ -1,0 +1,77 @@
+<html>
+<head>
+<div class="baselog">
+<link rel="stylesheet" href="resources/matlab-report-styles.css" type="text/css" />
+<style type="text/css" media="screen">
+div.treeview { white-space: nowrap; }
+.treeview img { border: 0px; vertical-align: middle; }
+.trigger { cursor: pointer; }
+.branch { display: none; margin-left: 22px; }
+span.lnnolink { cursor: pointer; color: blue; text-decoration: underline; padding: 1 }
+span.lnnonorm { color: grey; padding: 1 }
+span.textnorm { color: black; padding: 1 }
+span.textcmnt { color: green; padding: 1 }
+span.msglink { cursor: pointer; color: blue; text-decoration: underline }
+span.treelink { cursor: pointer; color: blue; text-decoration: underline }
+.error { color: red; }
+.fcflink { cursor: pointer; color: blue; text-decoration: underline }
+div.tooltip { visibility: hidden; position: fixed;
+  background-color: lightyellow; border: 1px solid black; }
+.td-linebottomrt-gray {border-bottom:1px solid #BBB; border-right:1px solid #BBB;background-color:#F0F0F0;}
+.td-linebottomrt-link {border-bottom:1px solid #BBB; border-right:1px solid #BBB;color:Blue;}
+</style>
+</div>
+<title>Code Generation Report For 'onlineGPR'</title>
+</head>
+<body>
+<div class="report-head">MATLAB Coder Build Log</div><p/>
+<div class="baselog">
+<div class="grayline"></div>
+<table cellpadding="4" cellspacing="1"><tr>
+<td align="left" class="td-linebottomrt-gray" colspan="2">Build Parameters</td>
+</tr>
+<tr><td align="left" valign="top" class="td-linebottomrt">Build directory</td>
+<td align="left" valign="top" class="td-linebottomrt-link"><a href="matlab: cd('/home/jjhu/matlab_ws/soft_object_manipulator_gpr/codegen/lib/onlineGPR')">/home/jjhu/matlab_ws/soft_object_manipulator_gpr/codegen/lib/onlineGPR</a></td></tr>
+<tr><td align="left" valign="top" class="td-linebottomrt">Make wrapper</td>
+<td align="left" valign="top" class="td-linebottomrt-link">"/usr/local/MATLAB/R2017a/bin/glnxa64/gmake"  -f onlineGPR_rtw.mk all</td></tr>
+<tr><td align="left" valign="top" class="td-linebottomrt">Make command</td>
+<td align="left" valign="top" class="td-linebottomrt-link">"/usr/local/MATLAB/R2017a/bin/glnxa64/gmake"  -f onlineGPR_rtw.mk all</td></tr>
+</table>
+<br/>
+<table border="1" cellpadding="4" cellspacing="1" width="100%">
+<tr><td align="left" class="td-linebottomrt-gray">Build Log</td></tr>
+<tr><td valign="top" class="td-script">
+<pre>
+<span class="td-line-number">    1   </span><span class="td-line-normal">g++ -c -std=c++98 -pedantic -Wno-long-long -fwrapv -fPIC -O0 -DMODEL=onlineGPR -DHAVESTDIO -DUSE_RTMODEL -DUNIX -I/home/jjhu/matlab_ws/soft_object_manipulator_gpr/codegen/lib/onlineGPR -I/home/jjhu/matlab_ws/soft_object_manipulator_gpr -I/usr/local/MATLAB/R2017a/extern/include -I/usr/local/MATLAB/R2017a/simulink/include -I/usr/local/MATLAB/R2017a/rtw/c/src -I/usr/local/MATLAB/R2017a/rtw/c/src/ext_mode/common -I/usr/local/MATLAB/R2017a/rtw/c/ert -o "onlineGPR_initialize.o" "onlineGPR_initialize.cpp"</span>
+<span class="td-line-number">    2   </span><span class="td-line-normal">g++ -c -std=c++98 -pedantic -Wno-long-long -fwrapv -fPIC -O0 -DMODEL=onlineGPR -DHAVESTDIO -DUSE_RTMODEL -DUNIX -I/home/jjhu/matlab_ws/soft_object_manipulator_gpr/codegen/lib/onlineGPR -I/home/jjhu/matlab_ws/soft_object_manipulator_gpr -I/usr/local/MATLAB/R2017a/extern/include -I/usr/local/MATLAB/R2017a/simulink/include -I/usr/local/MATLAB/R2017a/rtw/c/src -I/usr/local/MATLAB/R2017a/rtw/c/src/ext_mode/common -I/usr/local/MATLAB/R2017a/rtw/c/ert -o "onlineGPR_terminate.o" "onlineGPR_terminate.cpp"</span>
+<span class="td-line-number">    3   </span><span class="td-line-normal">g++ -c -std=c++98 -pedantic -Wno-long-long -fwrapv -fPIC -O0 -DMODEL=onlineGPR -DHAVESTDIO -DUSE_RTMODEL -DUNIX -I/home/jjhu/matlab_ws/soft_object_manipulator_gpr/codegen/lib/onlineGPR -I/home/jjhu/matlab_ws/soft_object_manipulator_gpr -I/usr/local/MATLAB/R2017a/extern/include -I/usr/local/MATLAB/R2017a/simulink/include -I/usr/local/MATLAB/R2017a/rtw/c/src -I/usr/local/MATLAB/R2017a/rtw/c/src/ext_mode/common -I/usr/local/MATLAB/R2017a/rtw/c/ert -o "onlineGPR.o" "onlineGPR.cpp"</span>
+<span class="td-line-number">    4   </span><span class="td-line-normal">g++ -c -std=c++98 -pedantic -Wno-long-long -fwrapv -fPIC -O0 -DMODEL=onlineGPR -DHAVESTDIO -DUSE_RTMODEL -DUNIX -I/home/jjhu/matlab_ws/soft_object_manipulator_gpr/codegen/lib/onlineGPR -I/home/jjhu/matlab_ws/soft_object_manipulator_gpr -I/usr/local/MATLAB/R2017a/extern/include -I/usr/local/MATLAB/R2017a/simulink/include -I/usr/local/MATLAB/R2017a/rtw/c/src -I/usr/local/MATLAB/R2017a/rtw/c/src/ext_mode/common -I/usr/local/MATLAB/R2017a/rtw/c/ert -o "mean.o" "mean.cpp"</span>
+<span class="td-line-number">    5   </span><span class="td-line-normal">g++ -c -std=c++98 -pedantic -Wno-long-long -fwrapv -fPIC -O0 -DMODEL=onlineGPR -DHAVESTDIO -DUSE_RTMODEL -DUNIX -I/home/jjhu/matlab_ws/soft_object_manipulator_gpr/codegen/lib/onlineGPR -I/home/jjhu/matlab_ws/soft_object_manipulator_gpr -I/usr/local/MATLAB/R2017a/extern/include -I/usr/local/MATLAB/R2017a/simulink/include -I/usr/local/MATLAB/R2017a/rtw/c/src -I/usr/local/MATLAB/R2017a/rtw/c/src/ext_mode/common -I/usr/local/MATLAB/R2017a/rtw/c/ert -o "inverseUpdatePlus.o" "inverseUpdatePlus.cpp"</span>
+<span class="td-line-number">    6   </span><span class="td-line-normal">g++ -c -std=c++98 -pedantic -Wno-long-long -fwrapv -fPIC -O0 -DMODEL=onlineGPR -DHAVESTDIO -DUSE_RTMODEL -DUNIX -I/home/jjhu/matlab_ws/soft_object_manipulator_gpr/codegen/lib/onlineGPR -I/home/jjhu/matlab_ws/soft_object_manipulator_gpr -I/usr/local/MATLAB/R2017a/extern/include -I/usr/local/MATLAB/R2017a/simulink/include -I/usr/local/MATLAB/R2017a/rtw/c/src -I/usr/local/MATLAB/R2017a/rtw/c/src/ext_mode/common -I/usr/local/MATLAB/R2017a/rtw/c/ert -o "eye.o" "eye.cpp"</span>
+<span class="td-line-number">    7   </span><span class="td-line-normal">g++ -c -std=c++98 -pedantic -Wno-long-long -fwrapv -fPIC -O0 -DMODEL=onlineGPR -DHAVESTDIO -DUSE_RTMODEL -DUNIX -I/home/jjhu/matlab_ws/soft_object_manipulator_gpr/codegen/lib/onlineGPR -I/home/jjhu/matlab_ws/soft_object_manipulator_gpr -I/usr/local/MATLAB/R2017a/extern/include -I/usr/local/MATLAB/R2017a/simulink/include -I/usr/local/MATLAB/R2017a/rtw/c/src -I/usr/local/MATLAB/R2017a/rtw/c/src/ext_mode/common -I/usr/local/MATLAB/R2017a/rtw/c/ert -o "inv.o" "inv.cpp"</span>
+<span class="td-line-number">    8   </span><span class="td-line-normal">g++ -c -std=c++98 -pedantic -Wno-long-long -fwrapv -fPIC -O0 -DMODEL=onlineGPR -DHAVESTDIO -DUSE_RTMODEL -DUNIX -I/home/jjhu/matlab_ws/soft_object_manipulator_gpr/codegen/lib/onlineGPR -I/home/jjhu/matlab_ws/soft_object_manipulator_gpr -I/usr/local/MATLAB/R2017a/extern/include -I/usr/local/MATLAB/R2017a/simulink/include -I/usr/local/MATLAB/R2017a/rtw/c/src -I/usr/local/MATLAB/R2017a/rtw/c/src/ext_mode/common -I/usr/local/MATLAB/R2017a/rtw/c/ert -o "inverseUpdate.o" "inverseUpdate.cpp"</span>
+<span class="td-line-number">    9   </span><span class="td-line-normal">g++ -c -std=c++98 -pedantic -Wno-long-long -fwrapv -fPIC -O0 -DMODEL=onlineGPR -DHAVESTDIO -DUSE_RTMODEL -DUNIX -I/home/jjhu/matlab_ws/soft_object_manipulator_gpr/codegen/lib/onlineGPR -I/home/jjhu/matlab_ws/soft_object_manipulator_gpr -I/usr/local/MATLAB/R2017a/extern/include -I/usr/local/MATLAB/R2017a/simulink/include -I/usr/local/MATLAB/R2017a/rtw/c/src -I/usr/local/MATLAB/R2017a/rtw/c/src/ext_mode/common -I/usr/local/MATLAB/R2017a/rtw/c/ert -o "rt_nonfinite.o" "rt_nonfinite.cpp"</span>
+<span class="td-line-number">   10   </span><span class="td-line-normal">g++ -c -std=c++98 -pedantic -Wno-long-long -fwrapv -fPIC -O0 -DMODEL=onlineGPR -DHAVESTDIO -DUSE_RTMODEL -DUNIX -I/home/jjhu/matlab_ws/soft_object_manipulator_gpr/codegen/lib/onlineGPR -I/home/jjhu/matlab_ws/soft_object_manipulator_gpr -I/usr/local/MATLAB/R2017a/extern/include -I/usr/local/MATLAB/R2017a/simulink/include -I/usr/local/MATLAB/R2017a/rtw/c/src -I/usr/local/MATLAB/R2017a/rtw/c/src/ext_mode/common -I/usr/local/MATLAB/R2017a/rtw/c/ert -o "rtGetNaN.o" "rtGetNaN.cpp"</span>
+<span class="td-line-number">   11   </span><span class="td-line-normal">g++ -c -std=c++98 -pedantic -Wno-long-long -fwrapv -fPIC -O0 -DMODEL=onlineGPR -DHAVESTDIO -DUSE_RTMODEL -DUNIX -I/home/jjhu/matlab_ws/soft_object_manipulator_gpr/codegen/lib/onlineGPR -I/home/jjhu/matlab_ws/soft_object_manipulator_gpr -I/usr/local/MATLAB/R2017a/extern/include -I/usr/local/MATLAB/R2017a/simulink/include -I/usr/local/MATLAB/R2017a/rtw/c/src -I/usr/local/MATLAB/R2017a/rtw/c/src/ext_mode/common -I/usr/local/MATLAB/R2017a/rtw/c/ert -o "rtGetInf.o" "rtGetInf.cpp"</span>
+<span class="td-line-number">   12   </span><span class="td-line-normal">### Creating static library ./onlineGPR.a ...</span>
+<span class="td-line-number">   13   </span><span class="td-line-normal">ar ruvs  ./onlineGPR.a onlineGPR_initialize.o onlineGPR_terminate.o onlineGPR.o mean.o inverseUpdatePlus.o eye.o inv.o inverseUpdate.o rt_nonfinite.o rtGetNaN.o rtGetInf.o</span>
+<span class="td-line-number">   14   </span><span class="td-line-normal">ar: `u' modifier ignored since `D' is the default (see `U')</span>
+<span class="td-line-number">   15   </span><span class="td-line-normal">ar: creating ./onlineGPR.a</span>
+<span class="td-line-number">   16   </span><span class="td-line-normal">a - onlineGPR_initialize.o</span>
+<span class="td-line-number">   17   </span><span class="td-line-normal">a - onlineGPR_terminate.o</span>
+<span class="td-line-number">   18   </span><span class="td-line-normal">a - onlineGPR.o</span>
+<span class="td-line-number">   19   </span><span class="td-line-normal">a - mean.o</span>
+<span class="td-line-number">   20   </span><span class="td-line-normal">a - inverseUpdatePlus.o</span>
+<span class="td-line-number">   21   </span><span class="td-line-normal">a - eye.o</span>
+<span class="td-line-number">   22   </span><span class="td-line-normal">a - inv.o</span>
+<span class="td-line-number">   23   </span><span class="td-line-normal">a - inverseUpdate.o</span>
+<span class="td-line-number">   24   </span><span class="td-line-normal">a - rt_nonfinite.o</span>
+<span class="td-line-number">   25   </span><span class="td-line-normal">a - rtGetNaN.o</span>
+<span class="td-line-number">   26   </span><span class="td-line-normal">a - rtGetInf.o</span>
+<span class="td-line-number">   27   </span><span class="td-line-normal">### Created: ./onlineGPR.a</span>
+<span class="td-line-number">   28   </span><span class="td-line-normal">### Successfully generated all binary outputs.</span>
+</pre>
+</td></tr></table>
+</div>
+</body>
+</html>

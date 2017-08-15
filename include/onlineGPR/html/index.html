@@ -1,0 +1,609 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Code Generation Report</title>
+<link rel="stylesheet" type="text/css" href="resources/eml_report.css" />
+<link rel="stylesheet" type="text/css" href="resources/jQuery/ui.resizable.css" />
+<link rel="stylesheet" type="text/css" href="index.css" />
+<style>
+	pre.code{
+		-moz-tab-size: 4; /* For Firefox */
+		-o-tab-size: 4; /* For Opera 10.6-12.1 */
+		tab-size: 4; /* For Chrome */
+	}
+</style>
+<script type="text/javascript" src="resources/jQuery/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="resources/jQuery/jquery-ui-1.7.custom.min.js"></script>
+<script type="text/javascript" src="resources/jQuery/jquery.tablesorter.mod.js"></script>
+<script type="text/javascript" src="resources/jQuery/jquery.hotkeys-0.7.8.js"></script>
+<script type="text/javascript" src="resources/eml_report_interactions.js"></script>
+<script type="text/javascript" src="resources/eml_report_layout.js"></script>
+<script type="text/javascript" src="rtwshrink.js"></script>
+<script type="text/javascript">
+var localizedMessages = {
+    callSelectPrompt: "Select a function call:",
+    callSelectSource: "Calls from this function",
+    callSelectTarget: "Calls to this function",
+    infoForExpression: "Information for the selected expression:",
+    infoForVarType: "Information for the selected variable:",
+    infoForVarConst: "Information for the selected compile-time constant:",
+    infoForVarNone: "This variable does not have information associated with it.",
+    infoForFilter: "Matched {0}/{1} functions, {2}/{3} methods",
+    autoExtrinsicCall: "Only supported within the MATLAB environment."
+};
+var keyBindings = {
+        selectMCodeTab: "Ctrl+m",
+    selectCallStackTab: "Ctrl+k",
+        selectCCodeTab: "Ctrl+c",
+       selectReportTab: "Ctrl+r",
+     selectCenterPanel: "Ctrl+w",
+      selectSummaryTab: "Ctrl+s",
+     selectMessagesTab: "Ctrl+a",
+    selectWatchListTab: "Ctrl+v",
+     selectBuildLogTab: "Ctrl+t",
+    clearAllHighlights: "Esc"
+};
+var functionInfoTable = {
+ MATLABcode1: "onlineGPR1_mcode.html",
+ fpath1: "/home/jjhu/matlab_ws/soft_object_manipulator_gpr/onlineGPR.m",
+ lines1: [1, 1, 68],
+ watch1: "onlineGPR1_watch.html",
+ title1: "Function: <span class='functionname'><a title='/home/jjhu/matlab_ws/soft_object_manipulator_gpr/onlineGPR.m' class='functionlink' href=\"matlab: open('/home/jjhu/matlab_ws/soft_object_manipulator_gpr/onlineGPR.m')\">onlineGPR</a></span>",
+ tcall1: [  ],
+ scall1: [ [ "From line 33 to onlineGPR > @(x,z) 1*exp(-0.5*sq_dist(x,z)/(L^2))", "212#srcline0" ], [ "From line 48 to inverseUpdatePlus", "346#srcline1" ], [ "From line 52 to onlineGPR > @(x,z) 1*exp(-0.5*sq_dist(x,z)/(L^2))", "212#srcline0" ], [ "From line 55 to inverseUpdate", "433#srcline1" ], [ "From line 61 to onlineGPR > @(x,z) 1*exp(-0.5*sq_dist(x,z)/(L^2))", "212#srcline0" ] ],
+ MATLABcode192: "sq_dist192_mcode.html",
+ fpath192: "/home/jjhu/matlab_ws/soft_object_manipulator_gpr/sq_dist.m",
+ lines192: [1, 28, 61],
+ watch192: "sq_dist192_watch.html",
+ title192: "Function: <span class='functionname'><a title='/home/jjhu/matlab_ws/soft_object_manipulator_gpr/sq_dist.m' class='functionlink' href=\"matlab: open('/home/jjhu/matlab_ws/soft_object_manipulator_gpr/sq_dist.m')\">sq_dist</a></span>",
+ tcall192: [ [ "From onlineGPR > @(x,z) 1*exp(-0.5*sq_dist(x,z)/(L^2)) line 8", "212#F192N8:B41" ] ],
+ scall192: [  ],
+ MATLABcode212: "_anonymousFunction1_212_mcode.html",
+ fpath212: "/home/jjhu/matlab_ws/soft_object_manipulator_gpr/onlineGPR.m",
+ lines212: [0, 0, 0],
+ watch212: "_anonymousFunction1_212_watch.html",
+ title212: "Function: <span class='functionname'><a title='/home/jjhu/matlab_ws/soft_object_manipulator_gpr/onlineGPR.m' class='functionlink' href=\"matlab: open('/home/jjhu/matlab_ws/soft_object_manipulator_gpr/onlineGPR.m')\">onlineGPR &gt; @(x,z) 1*exp(-0.5*sq_dist(x,z)/(L^2))</a></span>",
+ tcall212: [ [ "From onlineGPR line 33", "1#F212N7:B10" ], [ "From onlineGPR line 52", "1#F212N7:B10" ], [ "From onlineGPR line 61", "1#F212N7:B10" ] ],
+ scall212: [ [ "From line 8 to sq_dist", "192#srcline28" ] ],
+ MATLABcode346: "inverseUpdatePlus346_mcode.html",
+ fpath346: "/home/jjhu/matlab_ws/soft_object_manipulator_gpr/inverseUpdatePlus.m",
+ lines346: [1, 1, 10],
+ watch346: "inverseUpdatePlus346_watch.html",
+ title346: "Function: <span class='functionname'><a title='/home/jjhu/matlab_ws/soft_object_manipulator_gpr/inverseUpdatePlus.m' class='functionlink' href=\"matlab: open('/home/jjhu/matlab_ws/soft_object_manipulator_gpr/inverseUpdatePlus.m')\">inverseUpdatePlus</a></span>",
+ tcall346: [ [ "From onlineGPR line 48", "1#F346N5:B196" ] ],
+ scall346: [  ],
+ MATLABcode433: "inverseUpdate433_mcode.html",
+ fpath433: "/home/jjhu/matlab_ws/soft_object_manipulator_gpr/inverseUpdate.m",
+ lines433: [1, 1, 10],
+ watch433: "inverseUpdate433_watch.html",
+ title433: "Function: <span class='functionname'><a title='/home/jjhu/matlab_ws/soft_object_manipulator_gpr/inverseUpdate.m' class='functionlink' href=\"matlab: open('/home/jjhu/matlab_ws/soft_object_manipulator_gpr/inverseUpdate.m')\">inverseUpdate</a></span>",
+ tcall433: [ [ "From onlineGPR line 55", "1#F433N4:B222" ] ],
+ scall433: [  ],
+ rootFcnID: "1",
+ firstPage: "onlineGPR_cpp.html",
+ htmlRoot: "/home/jjhu/matlab_ws/soft_object_manipulator_gpr/codegen/lib/onlineGPR/html/"
+};
+var scriptInfoTable = {
+ fpath1: "/home/jjhu/matlab_ws/soft_object_manipulator_gpr/onlineGPR.m",
+ fpath2: "/usr/local/MATLAB/R2017a/toolbox/eml/eml/+coder/+internal/DisableDotParen.m",
+ fpath3: "/usr/local/MATLAB/R2017a/toolbox/eml/eml/+coder/+internal/function_handle.m",
+ fpath4: "/usr/local/MATLAB/R2017a/toolbox/eml/eml/+coder/+internal/length.m",
+ fpath5: "/usr/local/MATLAB/R2017a/toolbox/eml/eml/+coder/+internal/isBuiltInNumeric.m",
+ fpath6: "/usr/local/MATLAB/R2017a/toolbox/eml/eml/+coder/+internal/+scalar/floor.m",
+ fpath7: "/usr/local/MATLAB/R2017a/toolbox/eml/eml/+coder/+internal/applyScalarFunctionInPlace.m",
+ fpath8: "/usr/local/MATLAB/R2017a/toolbox/eml/lib/matlab/elfun/floor.m",
+ fpath9: "/usr/local/MATLAB/R2017a/toolbox/shared/coder/coder/+coder/+internal/narginchk.m",
+ fpath10: "/usr/local/MATLAB/R2017a/toolbox/eml/eml/+coder/+internal/constNonSingletonDim.m",
+ fpath11: "/usr/local/MATLAB/R2017a/toolbox/eml/lib/matlab/datafun/private/process_sumprod_inputs.m",
+ fpath12: "/usr/local/MATLAB/R2017a/toolbox/eml/eml/+coder/+internal/scalarEg.m",
+ fpath13: "/usr/local/MATLAB/R2017a/toolbox/eml/lib/fixedpoint/isnumerictype.m",
+ fpath14: "/usr/local/MATLAB/R2017a/toolbox/eml/lib/fixedpoint/isfimath.m",
+ fpath15: "/usr/local/MATLAB/R2017a/toolbox/eml/lib/fixedpoint/isfi.m",
+ fpath16: "/usr/local/MATLAB/R2017a/toolbox/eml/lib/matlab/elmat/intmax.m",
+ fpath17: "/usr/local/MATLAB/R2017a/toolbox/eml/lib/matlab/elmat/intmin.m",
+ fpath18: "/usr/local/MATLAB/R2017a/toolbox/eml/lib/matlab/eml/eml_int_forloop_overflow_check.m",
+ fpath19: "/usr/local/MATLAB/R2017a/toolbox/eml/eml/+coder/+internal/scalexpAllocNoCheck.m",
+ fpath20: "/usr/local/MATLAB/R2017a/toolbox/eml/eml/+coder/+internal/scalexpAlloc.m",
+ fpath21: "/usr/local/MATLAB/R2017a/toolbox/eml/eml/+coder/+internal/minOrMax.m",
+ fpath22: "/usr/local/MATLAB/R2017a/toolbox/eml/lib/matlab/datafun/max.m",
+ fpath23: "/usr/local/MATLAB/R2017a/toolbox/eml/lib/matlab/elmat/private/eml_isequal_core.m",
+ fpath24: "/usr/local/MATLAB/R2017a/toolbox/eml/lib/matlab/elmat/isequal.m",
+ fpath25: "/usr/local/MATLAB/R2017a/toolbox/eml/lib/matlab/datafun/private/combine_vector_elements.m",
+ fpath26: "/usr/local/MATLAB/R2017a/toolbox/eml/lib/matlab/datafun/private/sumprod.m",
+ fpath27: "/usr/local/MATLAB/R2017a/toolbox/eml/lib/matlab/datafun/sum.m",
+ fpath28: "/usr/local/MATLAB/R2017a/toolbox/eml/eml/+coder/+internal/nested_function.m",
+ fpath29: "/usr/local/MATLAB/R2017a/toolbox/eml/eml/+coder/+internal/assertValidDim.m",
+ fpath30: "/usr/local/MATLAB/R2017a/toolbox/eml/eml/+coder/+internal/prodsize.m",
+ fpath31: "/usr/local/MATLAB/R2017a/toolbox/eml/eml/+coder/+internal/useParforConst.m",
+ fpath32: "/usr/local/MATLAB/R2017a/toolbox/eml/eml/+coder/+internal/scalexpCompatible.m",
+ fpath33: "/usr/local/MATLAB/R2017a/toolbox/eml/eml/+coder/+internal/div.m",
+ fpath34: "/usr/local/MATLAB/R2017a/toolbox/eml/lib/matlab/ops/rdivide.m",
+ fpath35: "/usr/local/MATLAB/R2017a/toolbox/eml/lib/matlab/ops/mrdivide.p",
+ fpath36: "/usr/local/MATLAB/R2017a/toolbox/eml/lib/matlab/datafun/mean.m",
+ fpath37: "/usr/local/MATLAB/R2017a/toolbox/eml/lib/matlab/elmat/isnan.m",
+ fpath38: "/usr/local/MATLAB/R2017a/toolbox/eml/eml/+coder/+internal/relop.m",
+ fpath39: "/usr/local/MATLAB/R2017a/toolbox/eml/eml/+coder/+internal/singleOrHelper.m",
+ fpath40: "/usr/local/MATLAB/R2017a/toolbox/eml/eml/+coder/+internal/assertValidSizeArg.m",
+ fpath41: "/usr/local/MATLAB/R2017a/toolbox/eml/lib/matlab/elmat/isinf.m",
+ fpath42: "/usr/local/MATLAB/R2017a/toolbox/eml/eml/+coder/+internal/isIntegerClass.m",
+ fpath43: "/usr/local/MATLAB/R2017a/toolbox/shared/coder/coder/+coder/+internal/indexIntRelop.m",
+ fpath44: "/usr/local/MATLAB/R2017a/toolbox/eml/eml/+coder/+internal/floatModel.m",
+ fpath45: "/usr/local/MATLAB/R2017a/toolbox/eml/lib/matlab/elmat/repmat.m",
+ fpath46: "/usr/local/MATLAB/R2017a/toolbox/eml/lib/matlab/ops/power.m",
+ fpath47: "/usr/local/MATLAB/R2017a/toolbox/eml/eml/+coder/+internal/applyScalarFunction.m",
+ fpath48: "/usr/local/MATLAB/R2017a/toolbox/eml/eml/+coder/+internal/error.m",
+ fpath49: "/home/jjhu/matlab_ws/soft_object_manipulator_gpr/sq_dist.m",
+ fpath50: "/usr/local/MATLAB/R2017a/toolbox/eml/lib/matlab/ops/eml_mtimes_helper.m",
+ fpath51: "/usr/local/MATLAB/R2017a/toolbox/eml/lib/matlab/elmat/ismatrix.m",
+ fpath52: "/usr/local/MATLAB/R2017a/toolbox/eml/lib/matlab/ops/mpower.m",
+ fpath53: "/usr/local/MATLAB/R2017a/toolbox/eml/lib/matlab/sparfun/issparse.m",
+ fpath54: "/usr/local/MATLAB/R2017a/toolbox/eml/eml/+coder/+internal/+scalar/exp.m",
+ fpath55: "/usr/local/MATLAB/R2017a/toolbox/eml/lib/matlab/elfun/exp.m",
+ fpath56: "/usr/local/MATLAB/R2017a/toolbox/eml/eml/+coder/+internal/checkAndSaturateExpandSize.m",
+ fpath57: "/usr/local/MATLAB/R2017a/toolbox/eml/lib/matlab/elmat/eye.m",
+ fpath58: "/usr/local/MATLAB/R2017a/toolbox/eml/eml/+coder/+internal/+blas/inline.m",
+ fpath59: "/usr/local/MATLAB/R2017a/toolbox/eml/eml/+coder/+internal/+blas/use_refblas.m",
+ fpath60: "/usr/local/MATLAB/R2017a/toolbox/eml/eml/+coder/+internal/indexMinus.m",
+ fpath61: "/usr/local/MATLAB/R2017a/toolbox/eml/eml/+coder/+internal/indexTimes.m",
+ fpath62: "/usr/local/MATLAB/R2017a/toolbox/eml/eml/+coder/+internal/indexPlus.m",
+ fpath63: "/usr/local/MATLAB/R2017a/toolbox/eml/eml/+coder/+internal/+refblas/xgemm.m",
+ fpath64: "/usr/local/MATLAB/R2017a/toolbox/eml/eml/+coder/+internal/+blas/xgemm.m",
+ fpath65: "/usr/local/MATLAB/R2017a/toolbox/eml/eml/+coder/+internal/+scalar/abs.m",
+ fpath66: "/usr/local/MATLAB/R2017a/toolbox/eml/lib/matlab/elfun/abs.m",
+ fpath67: "/usr/local/MATLAB/R2017a/toolbox/eml/eml/+coder/+internal/+refblas/xcabs1.m",
+ fpath68: "/usr/local/MATLAB/R2017a/toolbox/eml/lib/matlab/matfun/inv.m",
+ fpath69: "/usr/local/MATLAB/R2017a/toolbox/eml/eml/+coder/+internal/nan.m",
+ fpath70: "/usr/local/MATLAB/R2017a/toolbox/eml/lib/matlab/matfun/norm.m",
+ fpath71: "/usr/local/MATLAB/R2017a/toolbox/shared/coder/coder/+coder/+internal/warning.m",
+ fpath72: "/usr/local/MATLAB/R2017a/toolbox/eml/eml/+coder/+internal/isFloatClass.m",
+ fpath73: "/usr/local/MATLAB/R2017a/toolbox/eml/lib/matlab/elmat/private/eml_eps.m",
+ fpath74: "/usr/local/MATLAB/R2017a/toolbox/eml/lib/matlab/elmat/eps.m",
+ fpath75: "/usr/local/MATLAB/R2017a/toolbox/eml/eml/+coder/+internal/flt2str.m",
+ fpath76: "/home/jjhu/matlab_ws/soft_object_manipulator_gpr/inverseUpdatePlus.m",
+ fpath77: "/usr/local/MATLAB/R2017a/toolbox/eml/eml/+coder/+internal/cat.m",
+ fpath78: "/home/jjhu/matlab_ws/soft_object_manipulator_gpr/inverseUpdate.m"
+};
+</script>
+</head>
+<body>
+
+<div class="west">
+<ul class="ui-tabs-nav">
+<li class="ui-tabs-nav-item ui-tabs-selected"><span class="tab-link" id="MATLABcode"><span>MATLAB code</span></span></li>
+<li class="ui-tabs-nav-item"><span class="tab-link" id="callstack"><span>Call stack</span></span></li>
+<li class="ui-tabs-nav-item"><span class="tab-link" id="ccode"><span>C code</span></span></li>
+</ul>
+<div id="MATLABcodebody" class="ui-tabs-panel">
+<!-- Begin Filter -->
+<div class="grayline methodset" onclick="filterClick(event);">
+<a class="collapsed">Filter</a>
+</div>
+<div id="filterbody" class="hidden">
+<table class="myfunc-filter-tbl">
+<tr>
+<td title="Use this filter to display only functions and methods that contain variables or expressions with the specified attributes." colspan="2" class="checkbox">
+<div class="myfunc-filterby-chk"><input type="checkbox" class="filterenable" />
+<div class="filter-enable-lbl">Filter functions and methods</div></div></td></tr><tr>
+<td class="label"><div class="myfunc-filterby-lbl">Filter by:</div></td>
+<td class="select">
+<div class="filters">
+<select class="myfunc-filterby">
+<option id="size">Size</option>
+<option id="complex">Complexity</option>
+<option id="class">Class</option>
+</select>
+</div>
+</td>
+</tr>
+
+<tr>
+<td class="label"><div class="myfunc-filterstr-lbl">Filter:</div></td>
+<td class="input"><div>
+
+<div class="size">
+<select class="myfunc-filter size">
+<option value="1 192 212 346 433">1 x 1</option>
+<option value="1">1 x 6</option>
+<option value="1 346">100 x 2</option>
+<option value="346">2 x 2</option>
+<option value="1 192">6 x 1</option>
+<option value="1">6 x <b>:</b>100</option>
+<option value="1 192">6 x <b>:</b>101</option>
+<option value="1 433"><b>:</b>100 x 1</option>
+<option value="1"><b>:</b>100 x 6</option>
+<option value="1 346 433"><b>:</b>100 x <b>:</b>100</option>
+<option value="1 192"><b>:</b>101 x 1</option>
+<option value="1"><b>:</b>101 x 6</option>
+<option value="1 433"><b>:</b>101 x <b>:</b>101</option>
+</select>
+</div>
+
+<div class="complex">
+<select class="myfunc-filter complex">
+<option value="">Complex values</option>
+<option value="1 192 212 346 433">Real values</option>
+</select>
+</div>
+<!-- Begin Class Filter -->
+<div class="class">
+<select class="myfunc-filter class">
+<option value="1">cell</option>
+<option value="1 192 212 346 433">double</option>
+<option value="1">function_handle</option>
+<option value="1">logical</option>
+</select>
+</div>
+<!-- End Class Filter -->
+</div>
+</td>
+</tr>
+</table>
+<div class="myfunc-count"></div>
+</div>
+<!-- End Filter -->
+<div class="grayline methodset" onmouseover="callTreeMouseOver(event);" onmouseout="callTreeMouseOut(event);" onclick="functionSetClick(event);">
+<a class="expanded">Functions</a>
+</div>
+<!-- Begin Function Tree -->
+<div id="functiontreebody">
+<div class="functionwrapper" onmouseover="callTreeMouseOver(event);" onmouseout="callTreeMouseOut(event);" onclick="functionTreeClick(event);">
+<ol class="tree">
+<!-- Begin Function Tree Roots -->
+<li class="leaf  passed"><a href="#" class="fcn  " id="F433N4:F1">inverseUpdate</a></li>
+<li class="leaf  passed"><a href="#" class="fcn  " id="F346N5:F2">inverseUpdatePlus</a></li>
+<li class="leaf  passed"><a href="#" class="fcn  " id="F1N6:F3">onlineGPR</a></li>
+<li class="leaf  passed"><a href="#" class="fcn  " id="F212N7:F4">onlineGPR &gt; @(x,z) 1*exp(-0.5*sq_dist(x,z)/(L^2))</a></li>
+<li class="leaf  passed"><a href="#" class="fcn  " id="F192N8:F5">sq_dist</a></li>
+<!-- End Function Tree Roots -->
+</ol>
+<!-- Function Tree Nodes -->
+<div class="functiontreenodes hidden">
+</div>
+<!-- End Function Tree Nodes -->
+</div>
+</div>
+<!-- End Function Tree -->
+<!-- Begin Class Tree -->
+<div class="grayline methodset" onmouseover="callTreeMouseOver(event);" onmouseout="callTreeMouseOut(event);" onclick="methodSetClick(event);">
+<a class="expanded">Classes</a>
+</div>
+<div id="classlistbody">
+<div class="classwrapper" onmouseover="callTreeMouseOver(event);" onmouseout="callTreeMouseOut(event);" onclick="classTreeClick(event);">
+<ol class="tree">
+<!-- Begin Class Tree Roots -->
+<!-- End Class Tree Roots -->
+</ol>
+<!-- Class Tree Nodes -->
+<div class="classlistnodes hidden">
+</div>
+</div>
+</div>
+<!-- End Class Tree -->
+</div>
+<!-- Begin Call Tree -->
+<div id="callstackbody" class="ui-tabs-panel hidden">
+<div class="treewrapper" onmouseover="callTreeMouseOver(event);" onmouseout="callTreeMouseOut(event);" onclick="callTreeClick(event);">
+<ol class="tree">
+<!-- Call Tree Root -->
+<li class="node collapsed passed"><a href="#" class="fcn  " id="F1N6:L1">onlineGPR</a>
+<ul>
+<li class="node collapsed passed"><a href="#" class="fcn  " id="F212N7:L2">onlineGPR &gt; @(x,z) 1*exp(-0.5*sq_dist(x,z)/(L^2))</a></li>
+<li class="leaf passed"><a href="#" class="fcn  " id="F346N5:L3">inverseUpdatePlus</a></li>
+<li class="leaf passed"><a href="#" class="fcn  " id="F433N4:L4">inverseUpdate</a></li>
+</ul>
+</li>
+</ol>
+<!-- Call Tree Nodes -->
+<div class="callstacknodes hidden">
+<ol class="callstacknode" id="callstacknode1">
+
+<li class="node collapsed passed"><a href="#" class="fcn  " id="F1N6:l1">onlineGPR</a>
+<ul>
+<li class="node collapsed passed"><a href="#" class="fcn  " id="F212N7:l2">onlineGPR &gt; @(x,z) 1*exp(-0.5*sq_dist(x,z)/(L^2))</a></li>
+<li class="leaf passed"><a href="#" class="fcn  " id="F346N5:l3">inverseUpdatePlus</a></li>
+<li class="leaf passed"><a href="#" class="fcn  " id="F433N4:l4">inverseUpdate</a></li>
+</ul>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode192">
+
+<li class="leaf passed"><a href="#" class="fcn  " id="F192N8:l5">sq_dist</a>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode212">
+
+<li class="node collapsed passed"><a href="#" class="fcn  " id="F212N7:l6">onlineGPR &gt; @(x,z) 1*exp(-0.5*sq_dist(x,z)/(L^2))</a>
+<ul>
+<li class="leaf passed"><a href="#" class="fcn  " id="F192N8:l7">sq_dist</a></li>
+</ul>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode346">
+
+<li class="leaf passed"><a href="#" class="fcn  " id="F346N5:l8">inverseUpdatePlus</a>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode433">
+
+<li class="leaf passed"><a href="#" class="fcn  " id="F433N4:l9">inverseUpdate</a>
+</li>
+</ol>
+
+</div>
+</div>
+</div>
+<!-- End Call Tree -->
+<!-- Begin C Code -->
+<div id="ccodebody" class="ui-tabs-panel hidden">
+
+<table class="myfunc-list" cellspacing="0" cellpadding="0" onclick="reportFileClick(event);">
+<tbody>
+<tr class="report" id="metrics.html"><td class="report"><a href="#">Static Code Metrics Report</a></td></tr>
+</tbody>
+</table><div class="grayline methodset" onclick="ccodeClick(event,1);">
+<a class="expanded">Target Source Files</a>
+</div>
+<!-- Begin C Code List -->
+<div id="ccodelistbody1" class="visible">
+<table class="myfunc-list" cellspacing="0" cellpadding="0" onclick="cFileClick(event);">
+<tbody>
+<tr class="ccode" id="eye_cpp.html"><td class="ccode"><a href="#">eye.cpp</a></td></tr>
+<tr class="ccode" id="eye_h.html"><td class="ccode"><a href="#">eye.h</a></td></tr>
+<tr class="ccode" id="inv_cpp.html"><td class="ccode"><a href="#">inv.cpp</a></td></tr>
+<tr class="ccode" id="inv_h.html"><td class="ccode"><a href="#">inv.h</a></td></tr>
+<tr class="ccode" id="inverseUpdate_cpp.html"><td class="ccode"><a href="#">inverseUpdate.cpp</a></td></tr>
+<tr class="ccode" id="inverseUpdate_h.html"><td class="ccode"><a href="#">inverseUpdate.h</a></td></tr>
+<tr class="ccode" id="inverseUpdatePlus_cpp.html"><td class="ccode"><a href="#">inverseUpdatePlus.cpp</a></td></tr>
+<tr class="ccode" id="inverseUpdatePlus_h.html"><td class="ccode"><a href="#">inverseUpdatePlus.h</a></td></tr>
+<tr class="ccode" id="mean_cpp.html"><td class="ccode"><a href="#">mean.cpp</a></td></tr>
+<tr class="ccode" id="mean_h.html"><td class="ccode"><a href="#">mean.h</a></td></tr>
+<tr class="ccode" id="onlineGPR_cpp.html"><td class="ccode"><a href="#">onlineGPR.cpp</a></td></tr>
+<tr class="ccode" id="onlineGPR_h.html"><td class="ccode"><a href="#">onlineGPR.h</a></td></tr>
+<tr class="ccode" id="onlineGPR_initialize_cpp.html"><td class="ccode"><a href="#">onlineGPR_initialize.cpp</a></td></tr>
+<tr class="ccode" id="onlineGPR_initialize_h.html"><td class="ccode"><a href="#">onlineGPR_initialize.h</a></td></tr>
+<tr class="ccode" id="onlineGPR_terminate_cpp.html"><td class="ccode"><a href="#">onlineGPR_terminate.cpp</a></td></tr>
+<tr class="ccode" id="onlineGPR_terminate_h.html"><td class="ccode"><a href="#">onlineGPR_terminate.h</a></td></tr>
+<tr class="ccode" id="onlineGPR_types_h.html"><td class="ccode"><a href="#">onlineGPR_types.h</a></td></tr>
+<tr class="ccode" id="rtGetInf_cpp.html"><td class="ccode"><a href="#">rtGetInf.cpp</a></td></tr>
+<tr class="ccode" id="rtGetInf_h.html"><td class="ccode"><a href="#">rtGetInf.h</a></td></tr>
+<tr class="ccode" id="rtGetNaN_cpp.html"><td class="ccode"><a href="#">rtGetNaN.cpp</a></td></tr>
+<tr class="ccode" id="rtGetNaN_h.html"><td class="ccode"><a href="#">rtGetNaN.h</a></td></tr>
+<tr class="ccode" id="rt_nonfinite_cpp.html"><td class="ccode"><a href="#">rt_nonfinite.cpp</a></td></tr>
+<tr class="ccode" id="rt_nonfinite_h.html"><td class="ccode"><a href="#">rt_nonfinite.h</a></td></tr>
+<tr class="ccode" id="rtwtypes_h.html"><td class="ccode"><a href="#">rtwtypes.h</a></td></tr>
+</tbody>
+</table>
+</div>
+<!-- End C Code List -->
+<div class="grayline methodset" onclick="ccodeClick(event,2);">
+<a class="expanded">Example Source Files</a>
+</div>
+<!-- Begin C Code List -->
+<div id="ccodelistbody2" class="visible">
+<table class="myfunc-list" cellspacing="0" cellpadding="0" onclick="cFileClick(event);">
+<tbody>
+<tr class="ccode" id="main_h.html"><td class="ccode"><a href="#">main.h</a></td></tr>
+</tbody>
+</table>
+</div>
+<!-- End C Code List -->
+</div>
+<!-- End C Code -->
+</div>
+<!-- Tooltips -->
+<div class="aux hidden">
+<div class="tooltips">
+<div class="tooltip" id="TT1"><table class="tooltip"><tr><th>Size</th><td><b>:</b>101 x <b>:</b>101</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT2"><table class="tooltip"><tr><th>Size</th><td>1 x 6</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT3"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT4"><table class="tooltip"><tr><th>Size</th><td>6 x <b>:</b>101</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT5"><table class="tooltip"><tr><th>Size</th><td><b>:</b>101 x 6</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT6"><table class="tooltip"><tr><th>Size</th><td>6 x 1</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT7"><table class="tooltip"><tr><th>Size</th><td><b>:</b>100 x <b>:</b>100</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT8"><table class="tooltip"><tr><th>Size</th><td>6 x <b>:</b>100</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT9"><table class="tooltip"><tr><th>Size</th><td><b>:</b>100 x 6</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT10"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>function_handle</td></tr></table></div>
+<div class="tooltip" id="TT11"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>logical</td></tr></table></div>
+<div class="tooltip" id="TT12"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>cell</td></tr></table></div>
+<div class="tooltip" id="TT13"><table class="tooltip"><tr><th>Size</th><td>1 x <b>:</b>100</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT14"><table class="tooltip"><tr><th>Size</th><td>6 x 1</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT15"><table class="tooltip"><tr><th>Size</th><td><b>:</b>100 x 1</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT16"><table class="tooltip"><tr><th>Size</th><td><b>:</b>101 x 1</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT17"><table class="tooltip"><tr><th>Size</th><td><b>:</b>100 x 1</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT18"><table class="tooltip"><tr><th>Size</th><td>100 x 2</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT19"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT20"><table class="tooltip"><tr><th>Size</th><td>100 x 1</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT21"><table class="tooltip"><tr><th>Size</th><td>100 x 1</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT22"><table class="tooltip"><tr><th>Size</th><td><b>:</b>100 x <b>:</b>101</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT23"><table class="tooltip"><tr><th>Size</th><td>1 x <b>:</b>101</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT24"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>function_handle</td></tr></table></div>
+<div class="tooltip" id="TT25"><table class="tooltip"><tr><th>Size</th><td>1 x 2</td></tr><tr><th>Class</th><td>cell</td></tr></table></div>
+<div class="tooltip" id="TT26"><table class="tooltip"><tr><th>Size</th><td>1 x 5</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT27"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>function_handle</td></tr></table></div>
+<div class="tooltip" id="TT28"><table class="tooltip"><tr><th>Size</th><td>1 x 0</td></tr><tr><th>Class</th><td>cell</td></tr></table></div>
+<div class="tooltip" id="TT29"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>int8</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT30"><table class="tooltip"><tr><th>Size</th><td>1 x 23</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT31"><table class="tooltip"><tr><th>Size</th><td>1 x 6</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT32"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>cell</td></tr></table></div>
+<div class="tooltip" id="TT33"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>function_handle</td></tr></table></div>
+<div class="tooltip" id="TT34"><table class="tooltip"><tr><th>Size</th><td>1 x 3</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT35"><table class="tooltip"><tr><th>Size</th><td>1 x 3</td></tr><tr><th>Class</th><td>cell</td></tr></table></div>
+<div class="tooltip" id="TT36"><table class="tooltip"><tr><th>Size</th><td>1 x 7</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT37"><table class="tooltip"><tr><th>Size</th><td>0 x 0</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT38"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>function_handle</td></tr></table></div>
+<div class="tooltip" id="TT39"><table class="tooltip"><tr><th>Size</th><td>1 x 0</td></tr><tr><th>Class</th><td>cell</td></tr></table></div>
+<div class="tooltip" id="TT40"><table class="tooltip"><tr><th>Size</th><td><b>:</b>? x <b>:</b>?</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT41"><table class="tooltip"><tr><th>Size</th><td>1 x 4</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT42"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>mxArray</td></tr></table></div>
+<div class="tooltip" id="TT43"><table class="tooltip"><tr><th>Size</th><td>1 x 2</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT44"><table class="tooltip"><tr><th>Size</th><td>2 x 1</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT45"><table class="tooltip"><tr><th>Size</th><td>1 x <b>:</b>?</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT46"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>int32</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT47"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>uint8</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT48"><table class="tooltip"><tr><th>Size</th><td>1 x 2</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT49"><table class="tooltip"><tr><th>Size</th><td><b>:</b>101 x 1</td></tr><tr><th>Class</th><td>logical</td></tr></table></div>
+<div class="tooltip" id="TT50"><table class="tooltip"><tr><th>Size</th><td>1 x 2</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT51"><table class="tooltip"><tr><th>Size</th><td>1 x 15</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT52"><table class="tooltip"><tr><th>Size</th><td><b>:</b>? x 1</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT53"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT54"><table class="tooltip"><tr><th>Size</th><td>1 x 14</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT55"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>function_handle</td></tr></table></div>
+<div class="tooltip" id="TT56"><table class="tooltip"><tr><th>Size</th><td>1 x 31</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT57"><table class="tooltip"><tr><th>Size</th><td><b>:</b>101 x 1</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT58"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>function_handle</td></tr></table></div>
+<div class="tooltip" id="TT59"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>function_handle</td></tr></table></div>
+<div class="tooltip" id="TT60"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>cell</td></tr></table></div>
+<div class="tooltip" id="TT61"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>cell</td></tr></table></div>
+<div class="tooltip" id="TT62"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>function_handle</td></tr></table></div>
+<div class="tooltip" id="TT63"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>cell</td></tr></table></div>
+<div class="tooltip" id="TT64"><table class="tooltip"><tr><th>Size</th><td>2 x 2</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT65"><table class="tooltip"><tr><th>Size</th><td>2 x 100</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT66"><table class="tooltip"><tr><th>Size</th><td>2 x <b>:</b>?</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT67"><table class="tooltip"><tr><th>Size</th><td>2 x <b>:</b>100</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT68"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT69"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>function_handle</td></tr></table></div>
+<div class="tooltip" id="TT70"><table class="tooltip"><tr><th>Size</th><td>1 x 27</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT71"><table class="tooltip"><tr><th>Size</th><td>1 x 33</td></tr><tr><th>Class</th><td>char</td></tr></table></div>
+<div class="tooltip" id="TT72"><table class="tooltip"><tr><th>Size</th><td><b>:</b>? x 2</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT73"><table class="tooltip"><tr><th>Size</th><td><b>:</b>100 x 2</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT74"><table class="tooltip"><tr><th>Size</th><td><b>:</b>? x 100</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT75"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>unknown</td></tr></table></div>
+<div class="tooltip" id="TT76"><table class="tooltip"><tr><th>Size</th><td><b>:</b>100 x 100</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT77"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>function_handle</td></tr></table></div>
+<div class="tooltip" id="TT78"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>function_handle</td></tr></table></div>
+<div class="tooltip" id="TT79"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>function_handle</td></tr></table></div>
+<div class="tooltip" id="TT80"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>function_handle</td></tr></table></div>
+<div class="tooltip" id="TT81"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>function_handle</td></tr></table></div>
+<div class="tooltip" id="TT82"><table class="tooltip"><tr><th>Size</th><td>2 x 1</td></tr><tr><th>Class</th><td>cell</td></tr></table></div>
+<div class="tooltip" id="TT83"><table class="tooltip"><tr><th>Size</th><td>2 x 1</td></tr><tr><th>Class</th><td>cell</td></tr></table></div>
+<div class="tooltip" id="TT84"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>function_handle</td></tr></table></div>
+<div class="tooltip" id="TT85"><table class="tooltip"><tr><th>Size</th><td>2 x 1</td></tr><tr><th>Class</th><td>cell</td></tr></table></div>
+<div class="tooltip" id="TT86"><table class="tooltip"><tr><th>Size</th><td>2 x 1</td></tr><tr><th>Class</th><td>cell</td></tr></table></div>
+<div class="tooltip" id="TT87"><table class="tooltip"><tr><th>Size</th><td><b>:</b>? x 6</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="V1"><table class="tooltip"><tr><th>Value</th><td>    1.0010</br></td></tr></table></div>
+<div class="tooltip" id="V2"><table class="tooltip"><tr><th>Value</th><td>   1</br></td></tr></table></div>
+<div class="tooltip" id="V3"><table class="tooltip"><tr><th>Value</th><td>    [0.6000]</br></td></tr></table></div>
+</div>
+</div>
+<!-- End Tooltips -->
+
+<div class="south">
+<ul class="ui-tabs-nav">
+<li class="ui-tabs-nav-item ui-tabs-selected"><span class="tab-link" id="summary"><span>Summary</span></span></li>
+<li class="ui-tabs-nav-item"><span class="tab-link" id="messages"><span>All Messages (0)</span></span></li>
+<li class="ui-tabs-nav-item"><span class="tab-link" id="watchlist"><span>Variables</span></span></li>
+<li class="ui-tabs-nav-item hidden"><span class="tab-link" id="watchload"><span>Variables</span></span></li>
+<li class="ui-tabs-nav-item"><span class="tab-link" id="buildlog1"><span>Target Build Log</span></span></li>
+</ul>
+
+<!-- Compilation Summary -->
+<div id="summarybody" class="ui-tabs-panel">
+<table cellpadding="1" cellspacing="4">
+<tr><td>C source code generated on:</td><td>10-Aug-2017 21:27:47</td></tr>
+<tr><td>Coding target:</td><td>Static Library</td></tr>
+<tr><td>Number of errors:</td><td><a href="javascript:selectMessagesTab();">0</a></td></tr>
+<tr><td>Number of warnings:</td><td><a href="javascript:selectMessagesTab();">0</a></td></tr>
+<tr><td>Number of notices:</td><td><a href="javascript:selectMessagesTab();">0</a></td></tr>
+</table>
+<p/><p/><table>
+<tr><td><b>Tell Us What You Think</b></td></tr>
+<tr><td>We value your feedback. Please take a few minutes to answer this short questionnaire regarding the Code Generation Report.</td></tr>
+<tr><td><a href="matlab: emlcprivate('launchReportSurvey');">&gt;&gt;Provide Feedback</a></td></tr>
+</table>
+</div>
+
+<!-- Message Table -->
+<div id="messagesbody" class="ui-tabs-panel hidden">
+<div>
+<div class="msgsuccess">Code generation successful. Click here to <a href="javaScript:selectSummaryTab();">view summary</a>.</div>
+</div>
+</div>
+<!-- Watchlist Table -->
+<div id="watchlistbody" class="ui-tabs-panel hidden">
+</div>
+<div id="watchloadbody" class="ui-tabs-panel hidden">
+Loading Variables table ...
+</div>
+
+<!-- Target Build Log -->
+<div id="buildlog1body" class="ui-tabs-panel hidden">
+<div class="grayline"></div>
+<table cellpadding="4" cellspacing="1"><tr>
+<td align="left" class="td-linebottomrt-gray" colspan="2">Build Parameters</td>
+</tr>
+<tr><td align="left" valign="top" class="td-linebottomrt">Build directory</td>
+<td align="left" valign="top" class="td-linebottomrt-link"><a href="matlab: cd('/home/jjhu/matlab_ws/soft_object_manipulator_gpr/codegen/lib/onlineGPR')">/home/jjhu/matlab_ws/soft_object_manipulator_gpr/codegen/lib/onlineGPR</a></td></tr>
+<tr><td align="left" valign="top" class="td-linebottomrt">Make wrapper</td>
+<td align="left" valign="top" class="td-linebottomrt-link">"/usr/local/MATLAB/R2017a/bin/glnxa64/gmake"  -f onlineGPR_rtw.mk all</td></tr>
+<tr><td align="left" valign="top" class="td-linebottomrt">Make command</td>
+<td align="left" valign="top" class="td-linebottomrt-link">"/usr/local/MATLAB/R2017a/bin/glnxa64/gmake"  -f onlineGPR_rtw.mk all</td></tr>
+</table>
+<br/>
+<table border="1" cellpadding="4" cellspacing="1" width="100%">
+<tr><td align="left" class="td-linebottomrt-gray">Build Log</td></tr>
+<tr><td valign="top" class="td-script">
+<pre>
+<span class="td-line-number">    1   </span><span class="td-line-normal">g++ -c -std=c++98 -pedantic -Wno-long-long -fwrapv -fPIC -O0 -DMODEL=onlineGPR -DHAVESTDIO -DUSE_RTMODEL -DUNIX -I/home/jjhu/matlab_ws/soft_object_manipulator_gpr/codegen/lib/onlineGPR -I/home/jjhu/matlab_ws/soft_object_manipulator_gpr -I/usr/local/MATLAB/R2017a/extern/include -I/usr/local/MATLAB/R2017a/simulink/include -I/usr/local/MATLAB/R2017a/rtw/c/src -I/usr/local/MATLAB/R2017a/rtw/c/src/ext_mode/common -I/usr/local/MATLAB/R2017a/rtw/c/ert -o "onlineGPR_initialize.o" "onlineGPR_initialize.cpp"</span>
+<span class="td-line-number">    2   </span><span class="td-line-normal">g++ -c -std=c++98 -pedantic -Wno-long-long -fwrapv -fPIC -O0 -DMODEL=onlineGPR -DHAVESTDIO -DUSE_RTMODEL -DUNIX -I/home/jjhu/matlab_ws/soft_object_manipulator_gpr/codegen/lib/onlineGPR -I/home/jjhu/matlab_ws/soft_object_manipulator_gpr -I/usr/local/MATLAB/R2017a/extern/include -I/usr/local/MATLAB/R2017a/simulink/include -I/usr/local/MATLAB/R2017a/rtw/c/src -I/usr/local/MATLAB/R2017a/rtw/c/src/ext_mode/common -I/usr/local/MATLAB/R2017a/rtw/c/ert -o "onlineGPR_terminate.o" "onlineGPR_terminate.cpp"</span>
+<span class="td-line-number">    3   </span><span class="td-line-normal">g++ -c -std=c++98 -pedantic -Wno-long-long -fwrapv -fPIC -O0 -DMODEL=onlineGPR -DHAVESTDIO -DUSE_RTMODEL -DUNIX -I/home/jjhu/matlab_ws/soft_object_manipulator_gpr/codegen/lib/onlineGPR -I/home/jjhu/matlab_ws/soft_object_manipulator_gpr -I/usr/local/MATLAB/R2017a/extern/include -I/usr/local/MATLAB/R2017a/simulink/include -I/usr/local/MATLAB/R2017a/rtw/c/src -I/usr/local/MATLAB/R2017a/rtw/c/src/ext_mode/common -I/usr/local/MATLAB/R2017a/rtw/c/ert -o "onlineGPR.o" "onlineGPR.cpp"</span>
+<span class="td-line-number">    4   </span><span class="td-line-normal">g++ -c -std=c++98 -pedantic -Wno-long-long -fwrapv -fPIC -O0 -DMODEL=onlineGPR -DHAVESTDIO -DUSE_RTMODEL -DUNIX -I/home/jjhu/matlab_ws/soft_object_manipulator_gpr/codegen/lib/onlineGPR -I/home/jjhu/matlab_ws/soft_object_manipulator_gpr -I/usr/local/MATLAB/R2017a/extern/include -I/usr/local/MATLAB/R2017a/simulink/include -I/usr/local/MATLAB/R2017a/rtw/c/src -I/usr/local/MATLAB/R2017a/rtw/c/src/ext_mode/common -I/usr/local/MATLAB/R2017a/rtw/c/ert -o "mean.o" "mean.cpp"</span>
+<span class="td-line-number">    5   </span><span class="td-line-normal">g++ -c -std=c++98 -pedantic -Wno-long-long -fwrapv -fPIC -O0 -DMODEL=onlineGPR -DHAVESTDIO -DUSE_RTMODEL -DUNIX -I/home/jjhu/matlab_ws/soft_object_manipulator_gpr/codegen/lib/onlineGPR -I/home/jjhu/matlab_ws/soft_object_manipulator_gpr -I/usr/local/MATLAB/R2017a/extern/include -I/usr/local/MATLAB/R2017a/simulink/include -I/usr/local/MATLAB/R2017a/rtw/c/src -I/usr/local/MATLAB/R2017a/rtw/c/src/ext_mode/common -I/usr/local/MATLAB/R2017a/rtw/c/ert -o "inverseUpdatePlus.o" "inverseUpdatePlus.cpp"</span>
+<span class="td-line-number">    6   </span><span class="td-line-normal">g++ -c -std=c++98 -pedantic -Wno-long-long -fwrapv -fPIC -O0 -DMODEL=onlineGPR -DHAVESTDIO -DUSE_RTMODEL -DUNIX -I/home/jjhu/matlab_ws/soft_object_manipulator_gpr/codegen/lib/onlineGPR -I/home/jjhu/matlab_ws/soft_object_manipulator_gpr -I/usr/local/MATLAB/R2017a/extern/include -I/usr/local/MATLAB/R2017a/simulink/include -I/usr/local/MATLAB/R2017a/rtw/c/src -I/usr/local/MATLAB/R2017a/rtw/c/src/ext_mode/common -I/usr/local/MATLAB/R2017a/rtw/c/ert -o "eye.o" "eye.cpp"</span>
+<span class="td-line-number">    7   </span><span class="td-line-normal">g++ -c -std=c++98 -pedantic -Wno-long-long -fwrapv -fPIC -O0 -DMODEL=onlineGPR -DHAVESTDIO -DUSE_RTMODEL -DUNIX -I/home/jjhu/matlab_ws/soft_object_manipulator_gpr/codegen/lib/onlineGPR -I/home/jjhu/matlab_ws/soft_object_manipulator_gpr -I/usr/local/MATLAB/R2017a/extern/include -I/usr/local/MATLAB/R2017a/simulink/include -I/usr/local/MATLAB/R2017a/rtw/c/src -I/usr/local/MATLAB/R2017a/rtw/c/src/ext_mode/common -I/usr/local/MATLAB/R2017a/rtw/c/ert -o "inv.o" "inv.cpp"</span>
+<span class="td-line-number">    8   </span><span class="td-line-normal">g++ -c -std=c++98 -pedantic -Wno-long-long -fwrapv -fPIC -O0 -DMODEL=onlineGPR -DHAVESTDIO -DUSE_RTMODEL -DUNIX -I/home/jjhu/matlab_ws/soft_object_manipulator_gpr/codegen/lib/onlineGPR -I/home/jjhu/matlab_ws/soft_object_manipulator_gpr -I/usr/local/MATLAB/R2017a/extern/include -I/usr/local/MATLAB/R2017a/simulink/include -I/usr/local/MATLAB/R2017a/rtw/c/src -I/usr/local/MATLAB/R2017a/rtw/c/src/ext_mode/common -I/usr/local/MATLAB/R2017a/rtw/c/ert -o "inverseUpdate.o" "inverseUpdate.cpp"</span>
+<span class="td-line-number">    9   </span><span class="td-line-normal">g++ -c -std=c++98 -pedantic -Wno-long-long -fwrapv -fPIC -O0 -DMODEL=onlineGPR -DHAVESTDIO -DUSE_RTMODEL -DUNIX -I/home/jjhu/matlab_ws/soft_object_manipulator_gpr/codegen/lib/onlineGPR -I/home/jjhu/matlab_ws/soft_object_manipulator_gpr -I/usr/local/MATLAB/R2017a/extern/include -I/usr/local/MATLAB/R2017a/simulink/include -I/usr/local/MATLAB/R2017a/rtw/c/src -I/usr/local/MATLAB/R2017a/rtw/c/src/ext_mode/common -I/usr/local/MATLAB/R2017a/rtw/c/ert -o "rt_nonfinite.o" "rt_nonfinite.cpp"</span>
+<span class="td-line-number">   10   </span><span class="td-line-normal">g++ -c -std=c++98 -pedantic -Wno-long-long -fwrapv -fPIC -O0 -DMODEL=onlineGPR -DHAVESTDIO -DUSE_RTMODEL -DUNIX -I/home/jjhu/matlab_ws/soft_object_manipulator_gpr/codegen/lib/onlineGPR -I/home/jjhu/matlab_ws/soft_object_manipulator_gpr -I/usr/local/MATLAB/R2017a/extern/include -I/usr/local/MATLAB/R2017a/simulink/include -I/usr/local/MATLAB/R2017a/rtw/c/src -I/usr/local/MATLAB/R2017a/rtw/c/src/ext_mode/common -I/usr/local/MATLAB/R2017a/rtw/c/ert -o "rtGetNaN.o" "rtGetNaN.cpp"</span>
+<span class="td-line-number">   11   </span><span class="td-line-normal">g++ -c -std=c++98 -pedantic -Wno-long-long -fwrapv -fPIC -O0 -DMODEL=onlineGPR -DHAVESTDIO -DUSE_RTMODEL -DUNIX -I/home/jjhu/matlab_ws/soft_object_manipulator_gpr/codegen/lib/onlineGPR -I/home/jjhu/matlab_ws/soft_object_manipulator_gpr -I/usr/local/MATLAB/R2017a/extern/include -I/usr/local/MATLAB/R2017a/simulink/include -I/usr/local/MATLAB/R2017a/rtw/c/src -I/usr/local/MATLAB/R2017a/rtw/c/src/ext_mode/common -I/usr/local/MATLAB/R2017a/rtw/c/ert -o "rtGetInf.o" "rtGetInf.cpp"</span>
+<span class="td-line-number">   12   </span><span class="td-line-normal">### Creating static library ./onlineGPR.a ...</span>
+<span class="td-line-number">   13   </span><span class="td-line-normal">ar ruvs  ./onlineGPR.a onlineGPR_initialize.o onlineGPR_terminate.o onlineGPR.o mean.o inverseUpdatePlus.o eye.o inv.o inverseUpdate.o rt_nonfinite.o rtGetNaN.o rtGetInf.o</span>
+<span class="td-line-number">   14   </span><span class="td-line-normal">ar: `u' modifier ignored since `D' is the default (see `U')</span>
+<span class="td-line-number">   15   </span><span class="td-line-normal">ar: creating ./onlineGPR.a</span>
+<span class="td-line-number">   16   </span><span class="td-line-normal">a - onlineGPR_initialize.o</span>
+<span class="td-line-number">   17   </span><span class="td-line-normal">a - onlineGPR_terminate.o</span>
+<span class="td-line-number">   18   </span><span class="td-line-normal">a - onlineGPR.o</span>
+<span class="td-line-number">   19   </span><span class="td-line-normal">a - mean.o</span>
+<span class="td-line-number">   20   </span><span class="td-line-normal">a - inverseUpdatePlus.o</span>
+<span class="td-line-number">   21   </span><span class="td-line-normal">a - eye.o</span>
+<span class="td-line-number">   22   </span><span class="td-line-normal">a - inv.o</span>
+<span class="td-line-number">   23   </span><span class="td-line-normal">a - inverseUpdate.o</span>
+<span class="td-line-number">   24   </span><span class="td-line-normal">a - rt_nonfinite.o</span>
+<span class="td-line-number">   25   </span><span class="td-line-normal">a - rtGetNaN.o</span>
+<span class="td-line-number">   26   </span><span class="td-line-normal">a - rtGetInf.o</span>
+<span class="td-line-number">   27   </span><span class="td-line-normal">### Created: ./onlineGPR.a</span>
+<span class="td-line-number">   28   </span><span class="td-line-normal">### Successfully generated all binary outputs.</span>
+</pre>
+</td></tr></table>
+
+</div>
+
+<!-- Potential Differences -->
+<div id="potentialDifferencesBody" class="ui-tabs-panel hidden">
+</div>
+
+</div>
+<!-- Begin MATLAB Code Panel -->
+<div class="center">
+<div class="center-title">
+<div class="ui-tabs-nav-item ui-tabs-selected">
+<span class="functiontitle">
+</span>
+<!-- Begin Call Sites -->
+<span id="callsiteselecttable" class="call-sites-tbl">
+<span id="callsiteselectlabel" class="filtered">Calls:</span>
+<select id="callsiteselect" onchange="callSiteChange(event)">
+<option value="callsiteprompt">Select a function call:</option>
+</select>
+</span>
+<!-- End Call Sites -->
+</div>
+</div>
+<div class="ui-tabs-panel">
+<iframe id="hiddenCodeFrame"></iframe>
+<div class="code" onmouseover="mcodeMouseOver(event);" onmouseout="mcodeMouseOut(event);"onclick="mcodeClick(event);">
+</div>
+</div>
+</div>
+<!-- End MATLAB Code Panel -->
+</body>
+</html>

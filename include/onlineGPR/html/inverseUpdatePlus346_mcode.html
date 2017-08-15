@@ -1,0 +1,16 @@
+<html>
+<body>
+<script src="resources/eml_report_loadable_data.js"></script>
+<pre class="code">
+<span class="srcline"><span class="lineno"><a href="76,1" id="srcline1"> 1</a></span><span class="line"><span class="keyword">function</span> [ <span class="var type1" id="S2T7U3">inv_A_update</span> ] = inverseUpdatePlus( <span class="var type1" id="S3T7U6">inv_A</span>,<span class="var type1" id="S4T18U7">u</span>,<span class="var type1" id="S5T18U8">v</span> )</span></span>
+<span class="srcline"><span class="lineno"><a href="76,2" id="srcline2"> 2</a></span><span class="line"><span class="comment">%INVERSEUPDATEPLUS Summary of this function goes here</span></span></span>
+<span class="srcline"><span class="lineno"><a href="76,3" id="srcline3"> 3</a></span><span class="line"><span class="comment">%   Detailed explanation goes here</span></span></span>
+<span class="srcline"><span class="lineno"><a href="76,4" id="srcline4"> 4</a></span><span class="line"><span class="mxinfo " id="T3:U5">[<span class="var type1" id="S6T3U12">m</span>,<span class="var type1" id="S7T3U13">n</span>] = size(<span class="var type1" id="S5T18U16">v</span>)</span>;</span></span>
+<span class="srcline"><span class="lineno"><a href="76,5" id="srcline5"> 5</a></span><span class="line"><span class="mxinfo " id="T64:U9"><span class="var type1" id="S9T64U19">alpha</span> = <span class="mxinfo " id="T64:U11">inv(<span class="mxinfo " id="T64:U12"><span class="mxinfo " id="T64:U13">eye(<span class="var type1" id="S7T3U25">n</span>)</span>+<span class="mxinfo " id="T64:U15"><span class="mxinfo " id="T67:U16"><span class="mxinfo " id="T65:U17"><span class="var type1" id="S5T18U29">v</span>'</span>*<span class="var type1" id="S3T7U30">inv_A</span></span>*<span class="var type1" id="S4T18U31">u</span></span></span>)</span></span>;</span></span>
+<span class="srcline"><span class="lineno"><a href="76,6" id="srcline6"> 6</a></span><span class="line"><span class="mxinfo " id="T7:U21"><span class="var type1" id="S2T7U34">inv_A_update</span> = <span class="mxinfo " id="T7:U23"><span class="var type1" id="S3T7U36">inv_A</span> - <span class="mxinfo " id="T7:U25"><span class="mxinfo " id="T76:U26"><span class="mxinfo " id="T73:U27"><span class="mxinfo " id="T73:U28"><span class="var type1" id="S3T7U41">inv_A</span>*<span class="var type1" id="S4T18U42">u</span></span>*<span class="var type1" id="S9T64U43">alpha</span></span>*<span class="mxinfo " id="T65:U32"><span class="var type1" id="S5T18U45">v</span>'</span></span>*<span class="var type1" id="S3T7U46">inv_A</span></span></span></span>;</span></span>
+<span class="srcline"><span class="lineno"><a href="76,7" id="srcline7"> 7</a></span><span class="line"></span></span>
+<span class="srcline"><span class="lineno"><a href="76,8" id="srcline8"> 8</a></span><span class="line"><span class="keyword">end</span></span></span>
+<span class="srcline"><span class="lineno"><a href="76,9" id="srcline9"> 9</a></span><span class="line"></span></span>
+</pre>
+</body>
+</html>
