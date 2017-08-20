@@ -39,8 +39,9 @@
 #define FPS 10
 #define MAX_VEL 0.06  //max allowed velocity
 #define TOLERANCE 0.006
-#define CONTROL_GAIN 2
+#define CONTROL_GAIN 1
 
+bool ini_with_data = true;
 //real cartesian velocity of ee reciving from yumi topic
 double cart_v_real[M] = {0};
 //global variable feedback points
@@ -190,7 +191,7 @@ void main_soft_object_manipulator(int argc,char ** argv)
     int K_update_size[2] = {0};
         
     //target
-    double xd[N] = {0.010599430650472641, -0.021574804559350014, 0.4256342053413391, 0.060182858258485794, 0.0037090808618813753, 0.4125695824623108};
+    double xd[N] = {-0.006695785094052553, -0.025510897859930992, 0.4342036247253418, 0.05169718340039253, -0.019047163426876068, 0.43057242035865784};
     
     ros::init(argc,argv, "soft_object_controller", ros::init_options::NoSigintHandler);
     signal(SIGINT, mySigintHandler);
@@ -225,14 +226,14 @@ void main_soft_object_manipulator(int argc,char ** argv)
             }
             std::cout << "Reached the target SUCCESSFULLY\n";
             //after 0.5 second
-            if(count/FPS > 0.5 && count/FPS < 1.5 ){
+            if(count/FPS > 0.5 && count/FPS < 1.2 ){
                 for(int i=0;i<M;i++)
                     armCommand.data[i] = 0;
                 armCommand.data[2] = -0.06;
                 armCommand.data[5] = -0.06;
                 cartVelPublisher.publish(armCommand);
             }
-            else if(count/FPS >= 1.5 && count/FPS < 2 ){
+            else if(count/FPS >= 1.2 && count/FPS < 2 ){
                 for(int i=0;i<M;i++)
                     armCommand.data[i] = 0;
                 cartVelPublisher.publish(armCommand);
@@ -266,7 +267,46 @@ void main_soft_object_manipulator(int argc,char ** argv)
 //                     xd[i] = x[i] + C[i];
 
 //             }
-            
+            if(ini_with_data && first_time)
+            {
+                std::string data_path = ros::package::getPath("soft_object_controller")+"/data/";
+                std::ifstream f_X(data_path+"X.txt"), f_Y(data_path+"Y.txt"), f_K(data_path+"K.txt"), f_inv_gram(data_path+"inv_gram_matrix.txt");
+                //initialize K and inv gram matrix with data
+                K_size[0] = MEMORY_SIZE;
+                K_size[1] = MEMORY_SIZE;
+                gram_matrix_size[0] = MEMORY_SIZE;
+                gram_matrix_size[1] = MEMORY_SIZE;
+                for(int i=0;i<MEMORY_SIZE*MEMORY_SIZE;i++)
+                {
+                     f_K>>K_data[i];
+                     f_inv_gram>>gram_matrix_data[i];
+                }
+                
+                //initialize X with data
+                X_size[0] = N;
+                X_size[1] = MEMORY_SIZE;
+                for(int i=0;i<MEMORY_SIZE*N;i++)
+                {
+                    f_X>>X_data[i];
+                }
+                //initialize Y with data
+                Y_size[0] = MEMORY_SIZE;
+                Y_size[1] = M;
+                for(int i=0;i<MEMORY_SIZE*M;i++)
+                {
+                    f_Y>>Y_data[i];
+                }
+                
+                for(int i=0;i<M;i++)
+                {
+                    y_star[i] = 0.005;
+                }
+                
+                stateRecorder.record(x_v,y,x_star,y_star,X_data,Y_data,K_data,gram_matrix_data);
+                
+                first_time = false;
+                
+            }
             if(moved){
                 if(first_time){
                     /*Initialize*/
