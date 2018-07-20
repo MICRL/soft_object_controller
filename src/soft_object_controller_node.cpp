@@ -41,7 +41,7 @@
 #define TOLERANCE 0.006
 #define CONTROL_GAIN 1
 
-bool ini_with_data = true;
+bool ini_with_data = false;
 //real cartesian velocity of ee reciving from yumi topic
 double cart_v_real[M] = {0};
 //global variable feedback points
@@ -80,13 +80,13 @@ double norm(const double x[3])
 //     for (i = 0; i < 3; i++) {
 //         b_p[i] = p[i] - p[i + 3];
 //     }
-// 
+//
 //     for (i0 = 0; i0 < 3; i0++) {
 //         c_p[i0] = (p[i0] + p[3 + i0]) / 2.0;
 //     }
-// 
+//
 //     c_p[3] = norm(b_p);
-// 
+//
 // }
 static void getFeatures(const double p[N],double c_p[N])
 {
@@ -100,10 +100,10 @@ static void getFeatures(const double p[N],double c_p[N])
             temp = c_p[i];
             c_p[i] = c_p[i+3];
             c_p[i+3] = temp;
-        }  
+        }
     }
 
-    
+
 
 }
 //return value higher than threshold
@@ -126,13 +126,13 @@ void cartVelCallback(const std_msgs::Float64MultiArray& msg)
     }
     //high pass to filter noise
     highPass(cart_v_real,msg.data.size(),1e-4);
-    
+
     for(int i=0;i<6;i++)
         if(cart_v_real[i] != 0)
             moved = true;
 //     std::cout<<cart_v_real[0]<<"\n";
     received = true;
-    
+
     // std::cout << "received real cartesian velocity from yumi topic\n";
 
 }
@@ -155,7 +155,7 @@ void startCallback(const std_msgs::Bool& msg)
     start = msg.data;
 }
 
-//for state recorder 
+//for state recorder
 StateRecorder stateRecorder;
 void mySigintHandler(int sig)
 {
@@ -189,10 +189,14 @@ void main_soft_object_manipulator(int argc,char ** argv)
     int Y_update_size[2] = {0};
     static double K_update_data[(MEMORY_SIZE+1)*(MEMORY_SIZE+1)] = {0};
     int K_update_size[2] = {0};
-        
+
     //target
-    double xd[N] = {-0.006695785094052553, -0.025510897859930992, 0.4342036247253418, 0.05169718340039253, -0.019047163426876068, 0.43057242035865784};
-    
+    // double xd[N] = {0.019661322236061096, -0.029331078752875328, 0.4286229610443115, 0.08090315014123917, -0.029032666236162186, 0.43450355529785156};
+
+    double xd[N] = {0.013259115628898144, -0.06235978379845619, 0.4228784441947937, 0.07597782462835312, -0.05619708076119423, 0.42269787192344666};
+
+    // double xd[N] = {  -0.005171080585569143, -0.033120717853307724, 0.4240342676639557, 0.07098953425884247, -0.030197400599718094, 0.42141690850257874};
+
     ros::init(argc,argv, "soft_object_controller", ros::init_options::NoSigintHandler);
     signal(SIGINT, mySigintHandler);
     ros::NodeHandle node;
@@ -204,11 +208,11 @@ void main_soft_object_manipulator(int argc,char ** argv)
     ros::Subscriber subStart = node.subscribe("/yumi/ikSloverVel_controller/go", 2, startCallback);
     //publish velocity control command
     ros::Publisher cartVelPublisher = node.advertise<std_msgs::Float64MultiArray> ("/yumi/ikSloverVel_controller/command", 1);
-    
+
     //command
     std_msgs::Float64MultiArray armCommand;
     armCommand.data.resize(M);
-    
+
 
     ros::Rate rate(FPS);
     bool first_time = true;
@@ -241,13 +245,13 @@ void main_soft_object_manipulator(int argc,char ** argv)
             else if(count/FPS >= 2)
                  break;
 
-                
-            
+
+
             ros::spinOnce();
             rate.sleep();
             continue;
         }
-        
+
         if(received && getFeedbackPoint){
             for(int i=0;i<N;i++)
                 x_old[i] = x[i];
@@ -281,7 +285,7 @@ void main_soft_object_manipulator(int argc,char ** argv)
                      f_K>>K_data[i];
                      f_inv_gram>>gram_matrix_data[i];
                 }
-                
+
                 //initialize X with data
                 X_size[0] = N;
                 X_size[1] = MEMORY_SIZE;
@@ -296,16 +300,16 @@ void main_soft_object_manipulator(int argc,char ** argv)
                 {
                     f_Y>>Y_data[i];
                 }
-                
+
                 for(int i=0;i<M;i++)
                 {
                     y_star[i] = 0.005;
                 }
-                
+
                 stateRecorder.record(x_v,y,x_star,y_star,X_data,Y_data,K_data,gram_matrix_data);
-                
+
                 first_time = false;
-                
+
             }
             if(moved){
                 if(first_time){
@@ -320,7 +324,7 @@ void main_soft_object_manipulator(int argc,char ** argv)
                         Y_data[i] = y[i];
                     Y_size[0] = 1;
                     Y_size[1] = M;
-                    
+
                     double keps = 0.001;
                     double F = 1;
                     //K
@@ -331,11 +335,11 @@ void main_soft_object_manipulator(int argc,char ** argv)
                     gram_matrix_data[0] = 1/(F*F+keps);
                     gram_matrix_size[0] = 1;
                     gram_matrix_size[1] = 1;
-                    
+
                     stateRecorder.record(x_v,y,x_star,y_star,X_data,Y_data,K_data,gram_matrix_data);
 //                     for(int i=0;i<N;i++)
 //                         target_file<<xd[i]<<' ';
-                    
+
                     first_time = false;
                 }
 
@@ -358,21 +362,21 @@ void main_soft_object_manipulator(int argc,char ** argv)
                             gram_matrix_data[i*K_size[0]+j] = gram_matrix_update_data[i*K_size[0]+j];
                         }
                     }
-                    
+
                     //update X
                     X_size[0] = X_update_size[0];
                     X_size[1] = X_update_size[1];
                     for(int i=0;i<X_size[1];i++)
                         for(int j=0;j<X_size[0];j++)
                             X_data[i*X_size[0]+j] = X_update_data[i*X_size[0]+j];
-                    
+
                     //update Y
                     Y_size[0] = Y_update_size[0];
                     Y_size[1] = Y_update_size[1];
                     for(int i=0;i<Y_size[1];i++)
                         for(int j=0;j<Y_size[0];j++)
                             Y_data[i*Y_size[0]+j] = Y_update_data[i*Y_size[0]+j];
-                    
+
                 }
             }
 //             std::cout<<"command v: ";
@@ -382,7 +386,7 @@ void main_soft_object_manipulator(int argc,char ** argv)
             received = false;
             getFeedbackPoint = false;
             moved = false;
-            
+
             //check if reach the desired vaule
             stopFlag = true;
             std::cout<<"deltX: ";
@@ -392,7 +396,7 @@ void main_soft_object_manipulator(int argc,char ** argv)
                 std::cout<<xd[i] - x[i]<<' ';
             }
             std::cout << "\n";
-            
+
             std::cout << "Velocity: ";
             double y_star_gain[M] = {0};
             for(int i=0;i<M;i++){
@@ -404,17 +408,17 @@ void main_soft_object_manipulator(int argc,char ** argv)
                 else
                     armCommand.data[i] = y_star_gain[i];
                 std::cout<<armCommand.data[i]<<' ';
-                
+
             }
             std::cout << "\n";
-            
+
             if(start){
                 //send arm velocity
                 cartVelPublisher.publish(armCommand);
                 std::cout << "sended velocity command\n";
             }
             std::cout << "\n-----------------------\n";
-            
+
             }
             else{
                 for(int i=0;i<M;i++)
@@ -449,4 +453,3 @@ int main(int argc, char ** argv)
 //
 // [EOF]
 //
-
